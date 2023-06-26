@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["bin/dev"]
+CMD ["rails", "s", "-b", "0.0.0.0"]
