@@ -76,3 +76,5 @@ gem "tailwindcss-rails", "~> 2.0"
 gem "mysql2", "~> 0.5.5"
 
 gem "dotenv", "~> 2.8"
+
+gem "devise", "~> 4.9"
