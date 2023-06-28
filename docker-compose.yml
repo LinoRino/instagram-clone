@@ -14,6 +14,8 @@ services:
       - DATABASE_USER=root
       - DATABASE_PASSWORD=password
       - DATABASE_NAME=app_development
+      - APP_DEFAULT_URL_HOST=localhost
+      - APP_DEFAULT_URL_PORT=3000
   db:
     image: mysql:5.7
     environment:
