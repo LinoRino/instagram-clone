@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["rails", "s", "-b", "0.0.0.0"]
+CMD ["rm", "-f", "tmp/pids/server.pid", "&&", "rails", "-p", "3000", "-b", "0.0.0.0"]
