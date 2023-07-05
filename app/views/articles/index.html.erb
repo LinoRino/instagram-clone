@@ -1,11 +1,12 @@
 <h1>hello <%= current_user.email %></h1>
 <div class="grid w-full max-w-lg">
+
   <% @posts.each do |post| %>
   <article class="grid gap-2 shadow bg-white p-4 rounded-lg w-full">
     <section class="flex gap-2 items-center">
       <span class="bg-slate-500 rounded-full grid w-10 h-10"></span>
       <span>LinoRino</span>
-      <span class="text-gray-500">2 min</span>
+      <span class="text-gray-500"><%= post.created_at %></span>
     </section>
     <p><%= post.title %></p>
     <figure class="p-4 rounded grid h-72 bg-gray-500"></figure>
@@ -33,5 +34,6 @@
     </section>
   </article>
   <% end %>
+
 </div>
 
