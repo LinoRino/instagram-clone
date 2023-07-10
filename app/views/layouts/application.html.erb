@@ -12,7 +12,7 @@
   </head>
 
   <body class="bg-gray-50 flex">
-    <aside class="h-screen top-0 left-0 sticky p-8 bg-white border-l-2">
+    <aside class="h-screen top-0 left-0 sticky p-8 bg-white border-l-2 [&_*]:select-none">
       <div class="grid gap-8">
         <span>Instagram</span>
         <ul class="grid w-48 gap-2">
@@ -37,14 +37,14 @@
             </a>
           </li>
           <li>
-            <a href="/articles/create" class="flex gap-4 p-3 w-full hover:bg-gray-200 [&>.logo]:hover:scale-110 rounded-lg">
+            <%= link_to new_post_path, class:"flex gap-4 p-3 w-full hover:bg-gray-200 [&>.logo]:hover:scale-110 rounded-lg" do %>
               <span class="logo transition-all">
                 <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </span>
               <span class="font-medium">Create</span>
-            </a>
+            <% end %>
           </li>
           <li>
             <a href="/" class="flex gap-4 p-3 w-full hover:bg-gray-200 [&>.logo]:hover:scale-110 rounded-lg">
@@ -59,7 +59,7 @@
         </ul>
       </div>
     </aside>
-    <main class="container px-5">
+    <main class="container p-6">
       <%= yield %>
     </main>
   </body>
