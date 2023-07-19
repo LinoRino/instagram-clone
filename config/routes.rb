@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  resources :articles, only: %i[index new], path: ""
+  resources :home, only: %i[index], path: ""
   resources :posts, only: %i[index show new create]
 end
