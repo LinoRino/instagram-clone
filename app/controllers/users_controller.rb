@@ -1,4 +1,4 @@
-class AccountController < ApplicationController
+class UsersController < ApplicationController
   def edit
     @user = User.find(current_user.id)
   end
@@ -16,6 +16,6 @@ class AccountController < ApplicationController
   private
 
   def update_params
-    params.require(:post)
+    params.require(:user)
   end
 end
