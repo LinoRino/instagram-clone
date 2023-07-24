@@ -4,9 +4,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.update(update_params)
+    if User.update(update_params)
       flash[:success] = 'User was successfully updated'
-      render 'home'
+      render ''
     else
       flash[:error] = 'Something went wrong'
       render 'edit'
@@ -16,6 +16,6 @@ class UsersController < ApplicationController
   private
 
   def update_params
-    params.require(:user)
+    params.require(:user).permit(:name, :bio,:gender)
   end
 end
