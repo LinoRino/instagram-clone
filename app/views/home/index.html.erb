@@ -2,7 +2,7 @@
   <% @posts.each do |post| %>
   <article class="grid gap-2 shadow bg-white p-4 rounded-lg w-full">
     <section class="flex gap-2 items-center">
-      <span class="bg-gray-500 rounded-full grid w-10 h-10"></span>
+      <%= image_tag post.user.avatar || "", class:"bg-gray-500 rounded-full grid w-10 h-10 border border-solid" %>
       <span><%= post.user.name %></span>
       <span class="text-gray-500"><%= post.created_at %></span>
     </section>
