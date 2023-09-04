@@ -1,15 +1,18 @@
 <div class="grid w-full max-w-lg gap-8">
   <% @posts.each do |post| %>
   <article class="grid gap-2 shadow bg-white p-4 rounded-lg w-full">
-    <section class="flex gap-2 items-center">
-      <span class="bg-gray-500 rounded-full grid w-10 h-10 border border-solid">
-        <% if post.user.avatar.persisted? %>
-          <%= image_tag post.user.avatar, class:"rounded-full" %>
+      <section class="flex gap-2 items-center">
+        <%= link_to user_path(post.user.id) do %>
+          <span class="bg-gray-500 rounded-full grid w-10 h-10 border border-solid">
+            <% if post.user.avatar.persisted? %>
+              <%= image_tag post.user.avatar, class:"rounded-full" %>
+            <% end %>
+          </span>
         <% end %>
-      </span>
-      <span><%= post.user.name %></span>
-      <span class="text-gray-500"><%= post.created_at %></span>
-    </section>
+        <span><%= post.user.name %></span>
+        <span class="text-gray-500"><%= post.created_at %></span>
+      </section>
+
     <p><%= post.title %></p>
     <figure class="min-h-[8rem] bg-gray-500 rounded-lg">
       <%= image_tag post.image, class: "rounded-lg pointer-events-none w-full" %>
