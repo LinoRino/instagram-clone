@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   resources :home, only: %i[index], path: ""
-  resources :posts, only: %i[index show new create]
+  resources :posts, only: %i[index show new create] do
+    resource :likes, only: %i[create destroy]
+  end
   resources :users, only: %i[index show edit update]
 end
