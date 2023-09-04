@@ -1,0 +1,18 @@
+<%= form_with model: @user, local: true, class:"bg-white rounded-lg p-8 grid gap-4 [&>*]:max-w-md" do |item| %>
+
+  <h1 class="text-4xl">Edit profile</h1>
+  <div class="grid gap-2"><label>Name</label><%= item.text_field :name, placeholder: current_user.name %></div>
+  <div class="grid gap-2">
+    <label>Bio</label>
+    <%= item.text_area :bio, placeholder: current_user.bio %>
+  </div>
+  <div class="grid gap-2">
+    <label>Gender</label>
+    <%= item.text_field :gender, placeholder: current_user.gender %>
+  </div>
+    <div class="grid gap-2">
+    <label>Avatar</label>
+    <%= item.file_field :avatar %>
+  </div>
+  <%= item.submit "Submit"%>
+<% end %>
