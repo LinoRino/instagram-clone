@@ -23,4 +23,11 @@
       <p><%= @user.bio %></p>
     </section>
   </header>
+  <section class="pt-12 border-t border-solid grid grid-cols-3 gap-4">
+    <% @posts.each do |post| %>
+    <article class="aspect-[1/1] rounded">
+      <%= image_tag post.image, class: "rounded-lg object-cover pointer-events-none w-full h-full" %>
+    </article>
+    <% end %>
+  </section>
 </div>
