@@ -30,6 +30,6 @@
 
 @layer components {
   button.icon {
-    @apply hover:[&>svg]:stroke-gray-400 p-2
+    @apply hover:[&>svg]:opacity-50 p-2
   }
 }
