@@ -3,19 +3,33 @@
 @tailwind utilities;
 
 @layer base {
-  [multiple], [type=date], [type=datetime-local], [type=email], [type=month], [type=number], [type=password], [type=search], [type=tel], [type=text], [type=time], [type=url], [type=week], select, textarea {
+
+  [multiple],
+  [type=date],
+  [type=datetime-local],
+  [type=email],
+  [type=month],
+  [type=number],
+  [type=password],
+  [type=search],
+  [type=tel],
+  [type=text],
+  [type=time],
+  [type=url],
+  [type=week],
+  select,
+  textarea {
     @apply p-2 rounded-lg border-2 focus:ring-0 border-gray-400
   }
-  [type=submit] {
+
+  button.submit {
     @apply bg-sky-500 cursor-pointer text-white px-4 py-3 rounded-md
   }
 }
 
 
 @layer components {
-  button[data-variant=icon] {
-    @apply hover:[&>svg]:stroke-gray-400 p-2
+  button.icon {
+    @apply hover:[&>svg]:opacity-50 p-2
   }
 }
-
-
