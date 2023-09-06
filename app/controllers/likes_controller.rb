@@ -11,7 +11,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.find(params[:id])
+    @like = Like.where(user_id: current_user.id, post_id: params[:post_id]).first
     @like.destroy
     redirect_back(fallback_location: home_index_path)
   end
