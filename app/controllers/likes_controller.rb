@@ -1,20 +1,24 @@
 class LikesController < ApplicationController
   def create
-    @like = Like.new(like_params)
-    @like.user = current_user
-    @like.save
-    redirect_back(fallback_location: root_path)
+    input = like_params.merge(user_id: current_user.id)
+    @like = Like.new(input)
+    if @like.save
+      flash[:success] = 'Post successfully liked'
+    else
+      flash[:error] = 'Something went wrong'
+    end
+    redirect_back(fallback_location: home_index_path)
   end
 
   def destroy
     @like = Like.find(params[:id])
     @like.destroy
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: home_index_path)
   end
 
   private
 
   def like_params
-    params.require(:like).permit(:post_id)
+    params.permit(:post_id)
   end
 end
