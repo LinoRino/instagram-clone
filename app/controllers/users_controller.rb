@@ -5,9 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = Post.where(user_id: params[:id])
   end
-
 
   def update
     if User.update(update_params)
@@ -22,6 +20,6 @@ class UsersController < ApplicationController
   private
 
   def update_params
-    params.require(:user).permit(:name, :bio,:gender, :avatar)
+    params.require(:user).permit(:name, :bio, :gender, :avatar)
   end
 end

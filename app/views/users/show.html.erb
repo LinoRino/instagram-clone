@@ -11,20 +11,20 @@
       </div>
       <ul class="flex gap-4">
         <li>
-          <b><%= @posts.length %></b> posts
+          <b><%= @user.posts.length %></b> posts
         </li>
         <li>
-          <b><%= 1 %></b> followers
+          <b><%= @user.followers.length %></b> followers
         </li>
         <li>
-          <b><%= 1 %></b> followings
+          <b><%= @user.followings.length %></b> followings
         </li>
       </ul>
       <p><%= @user.bio %></p>
     </section>
   </header>
   <section class="pt-12 border-t border-solid grid grid-cols-3 gap-4">
-    <% @posts.each do |post| %>
+    <% @user.posts.each do |post| %>
     <article class="aspect-[1/1] rounded">
       <%= image_tag post.image, class: "rounded-lg object-cover pointer-events-none w-full h-full" %>
     </article>
