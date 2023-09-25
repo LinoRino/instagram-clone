@@ -11,6 +11,6 @@ Rails.application.routes.draw do
     resource :likes, only: %i[create destroy]
   end
   resources :users, only: %i[index show edit update] do
-    resources :followers, only: %i[create destroy]
+    resource :followers, only: %i[create destroy]
   end
 end
