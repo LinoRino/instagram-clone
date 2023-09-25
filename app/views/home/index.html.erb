@@ -35,9 +35,10 @@
           </svg>
         </button>
       </div>
-      <form>
-        <input placeholder="add a comment..." autocomplete="off" type="text" class="w-full">
-      </form>
+      <%# コメントを入力するフォーム %>
+      <%= form_with model: [post, post.comments.build], remote: true do |f| %>
+        <%= f.text_field :content, placeholder: "Add a comment...", class: "w-full rounded-md border border-solid border-gray-300 p-2" %>
+      <% end %>
     </section>
   </article>
   <% end %>
