@@ -1,25 +1,23 @@
 class FollowersController < ApplicationController
   def create
-    input = follower_params.merge(follower_id: current_user.id, followed_id: params[:user_id])
-    @follower = Follower.new(input)
+    @follower = Follower.new(followed_id: params[:user_id], follower_id: current_user.id)
     if @follower.save
       flash[:success] = 'Follower successfully created'
     else
       flash[:error] = 'Something went wrong'
-      render 'new'
     end
-    redirect_back(fallback_location: show_user_path)
+    redirect_to user_path(params[:user_id])
   end
 
-  def dpaestroy
+  def destroy
     @follower = Follower.find(params[:id])
-    @follower.destroy
-    redirect_back(fallback_location: show_user_path)
+    if @follower.destroy
+      flash[:success] = 'Follower successfully deleted'
+    end
+    redirect_to user_path(params[:user_id])
   end
-
-  private
 
   def follower_params
-    params.require(:followe)
+    params.require(:follower).permit(:followed_id, :follower_id)
   end
 end
