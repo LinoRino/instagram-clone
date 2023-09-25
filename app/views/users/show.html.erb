@@ -1,33 +1,39 @@
 <div class="max-w-4xl mx-auto">
   <header class="flex justify-start w-full p-6">
     <section>
-        <%= image_tag @user.avatar || "", class:"w-40 mr-12 bg-gray-500 h-40 rounded-full" %>
+      <%= image_tag @user.avatar || "", class: "w-40 mr-12 bg-gray-500 h-40 rounded-full" %>
     </section>
     <section class="flex flex-col gap-4 flex-grow max-w-sm">
       <div class="flex gap-4 items-center">
-        <h2 class="text-2xl mr-4"><%= @user.name%></h2>
-        <button class="bg-gray-200 px-4 rounded-md py-2">Follow</button>
+        <h2 class="text-2xl mr-4"><%= @user.name %></h2>
+        <% unless current_user.id == @user.id %>
+          <% unless current_user.following(@user).nil? %>
+            <%= button_to "Unfollow", user_followers_path(@user.id, id:current_user.following(@user).id), method: "delete", class: "bg-gray-200 px-4 rounded-md py-2" %>
+          <% else %>
+            <%= button_to "Follow", user_followers_path(@user.id), method: "post", class: "bg-gray-200 px-4 rounded-md py-2" %>
+          <% end %>
+        <% end %>
         <button class="bg-gray-200 px-4 rounded-md py-2">Message</button>
       </div>
       <ul class="flex gap-4">
         <li>
-          <b><%= @posts.length %></b> posts
+          <b><%= @user.posts.length %></b> posts
         </li>
         <li>
-          <b><%= 1 %></b> followers
+          <b><%= @user.followers.length %></b> followers
         </li>
         <li>
-          <b><%= 1 %></b> followings
+          <b><%= @user.followings.length %></b> followings
         </li>
       </ul>
       <p><%= @user.bio %></p>
     </section>
   </header>
   <section class="pt-12 border-t border-solid grid grid-cols-3 gap-4">
-    <% @posts.each do |post| %>
-    <article class="aspect-[1/1] rounded">
-      <%= image_tag post.image, class: "rounded-lg object-cover pointer-events-none w-full h-full" %>
-    </article>
+    <% @user.posts.each do |post| %>
+      <article class="aspect-[1/1] rounded">
+        <%= image_tag post.image, class: "rounded-lg object-cover pointer-events-none w-full h-full" %>
+      </article>
     <% end %>
   </section>
 </div>
