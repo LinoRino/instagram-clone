@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :posts
   has_many :followers, foreign_key: :followed_id, class_name: 'Follower'
   has_many :followings, foreign_key: :follower_id, class_name: 'Follower'
+
+  def following(user)
+    followings.where(followed_id: user.id).first
+  end
 end
