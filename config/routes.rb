@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  resources :home, only: %i[index], path: ''
+  get '/', to: 'home#index', as: 'root'
   resources :posts, only: %i[index show new create] do
     resource :likes, only: %i[create destroy]
+    resources :comments, only: %i[create index]
   end
   resources :users, only: %i[index show edit update] do
     resource :followers, only: %i[create destroy]
