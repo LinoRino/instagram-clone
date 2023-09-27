@@ -7,13 +7,13 @@ class LikesController < ApplicationController
     else
       flash[:error] = 'Something went wrong'
     end
-    redirect_back(fallback_location: home_index_path)
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
     @like = Like.where(user_id: current_user.id, post_id: params[:post_id]).first
     @like.destroy
-    redirect_back(fallback_location: home_index_path)
+    redirect_back(fallback_location: root_path)
   end
 
   private
