@@ -1,0 +1,21 @@
+<% if @comments.length > 0 %>
+<% @comments.each do |comment| %>
+  <article class="grid gap-2 shadow bg-white p-4 rounded-lg w-full">
+    <section class="flex gap-2 items-center">
+      <%= link_to user_path(comment.user.id) do %>
+        <span class="bg-gray-500 rounded-full grid w-10 h-10 border border-solid">
+          <% if comment.user.avatar.persisted? %>
+            <%= image_tag comment.user.avatar, class:"rounded-full" %>
+          <% end %>
+        </span>
+      <% end %>
+      <span><%= comment.user.name %></span>
+      <span class="text-gray-500"><%= comment.created_at %></span>
+    </section>
+
+    <p><%= comment.content %></p>
+  </article>
+<% end %>
+<% else %>
+  <p class="text-center">No comments yet.</p>
+<% end %>
